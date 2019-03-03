@@ -2493,7 +2493,7 @@
     var DefaultType = {
       animation: 'boolean',
       template: 'string',
-      title: '(string|element|function)',
+      Book: '(string|element|function)',
       trigger: 'string',
       delay: '(number|object)',
       html: 'boolean',
@@ -2515,7 +2515,7 @@
       animation: true,
       template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',
       trigger: 'hover focus',
-      title: '',
+      Book: '',
       delay: 0,
       html: false,
       selector: false,
@@ -2820,7 +2820,7 @@
 
 
       _proto.isWithContent = function isWithContent() {
-        return Boolean(this.getTitle());
+        return Boolean(this.getBook());
       };
 
       _proto.addAttachmentClass = function addAttachmentClass(attachment) {
@@ -2834,7 +2834,7 @@
 
       _proto.setContent = function setContent() {
         var tip = this.getTipElement();
-        this.setElementContent($$$1(tip.querySelectorAll(Selector.TOOLTIP_INNER)), this.getTitle());
+        this.setElementContent($$$1(tip.querySelectorAll(Selector.TOOLTIP_INNER)), this.getBook());
         $$$1(tip).removeClass(ClassName.FADE + " " + ClassName.SHOW);
       };
 
@@ -2855,14 +2855,14 @@
         }
       };
 
-      _proto.getTitle = function getTitle() {
-        var title = this.element.getAttribute('data-original-title');
+      _proto.getBook = function getBook() {
+        var Book = this.element.getAttribute('data-original-Book');
 
-        if (!title) {
-          title = typeof this.config.title === 'function' ? this.config.title.call(this.element) : this.config.title;
+        if (!Book) {
+          Book = typeof this.config.Book === 'function' ? this.config.Book.call(this.element) : this.config.Book;
         }
 
-        return title;
+        return Book;
       }; // Private
 
 
@@ -2900,16 +2900,16 @@
             selector: ''
           });
         } else {
-          this._fixTitle();
+          this._fixBook();
         }
       };
 
-      _proto._fixTitle = function _fixTitle() {
-        var titleType = typeof this.element.getAttribute('data-original-title');
+      _proto._fixBook = function _fixBook() {
+        var BookType = typeof this.element.getAttribute('data-original-Book');
 
-        if (this.element.getAttribute('title') || titleType !== 'string') {
-          this.element.setAttribute('data-original-title', this.element.getAttribute('title') || '');
-          this.element.setAttribute('title', '');
+        if (this.element.getAttribute('Book') || BookType !== 'string') {
+          this.element.setAttribute('data-original-Book', this.element.getAttribute('Book') || '');
+          this.element.setAttribute('Book', '');
         }
       };
 
@@ -2998,8 +2998,8 @@
           };
         }
 
-        if (typeof config.title === 'number') {
-          config.title = config.title.toString();
+        if (typeof config.Book === 'number') {
+          config.Book = config.Book.toString();
         }
 
         if (typeof config.content === 'number') {
@@ -3177,7 +3177,7 @@
       SHOW: 'show'
     };
     var Selector = {
-      TITLE: '.popover-header',
+      Book: '.popover-header',
       CONTENT: '.popover-body'
     };
     var Event = {
@@ -3212,7 +3212,7 @@
 
       // Overrides
       _proto.isWithContent = function isWithContent() {
-        return this.getTitle() || this._getContent();
+        return this.getBook() || this._getContent();
       };
 
       _proto.addAttachmentClass = function addAttachmentClass(attachment) {
@@ -3227,7 +3227,7 @@
       _proto.setContent = function setContent() {
         var $tip = $$$1(this.getTipElement()); // We use append for html objects to maintain js events
 
-        this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
+        this.setElementContent($tip.find(Selector.Book), this.getBook());
 
         var content = this._getContent();
 
